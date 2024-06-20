@@ -26,5 +26,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(next_page=settings.LOGOUT_REDIRECT_URL), name='logout'),
     path("accounts/", include("django.contrib.auth.urls")),
     # Local Apps
+    path("accounts/", include("accounts.urls")),
     path("", include("pages.urls")),
 ]
