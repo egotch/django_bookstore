@@ -23,7 +23,7 @@ urlpatterns = [
     # Django admin
     path('admin/', admin.site.urls),
     # User Management
-    path('logout/', auth_views.LogoutView.as_view(next_page=settings.ACCOUNT_LOGOUT_REDIRECT ), name='logout'),
+    # path('logout/', auth_views.LogoutView.as_view(next_page=settings.ACCOUNT_LOGOUT_REDIRECT ), name='logout'),
     path("accounts/", include("allauth.urls")),
     # Local Apps
     # path("accounts/", include("accounts.urls")),
