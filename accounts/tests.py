@@ -1,10 +1,9 @@
 from django.contrib.auth.forms import UsernameField
 from django.test import TestCase
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user, get_user_model
 from django.urls import reverse, resolve
 
 from .forms import CustomUserCreationForm
-from .views import SignUpPageView
 
 class CustomUserTests(TestCase):
 
@@ -32,21 +31,21 @@ class CustomUserTests(TestCase):
 
 
 class SignUpPageTests(TestCase):
+    username = "newuser"
+    email = "newuser@email.com"
+
     def setUp(self):
-        url = reverse("signup")
+        url = reverse("account_signup")
         self.response = self.client.get(url)
 
     def test_signup_template(self):
         self.assertEqual(self.response.status_code, 200)
-        self.assertTemplateUsed(self.response, "registration/signup.html")
+        self.assertTemplateUsed(self.response, "account/signup.html")
         self.assertContains(self.response, "Sign Up")
-        self.assertNotContains(self.response, "This text should NOT appear on the page")
+        self.assertNotContains(self.response, "Why hello! I most certainly do not belong on this template, te-hehe")
 
     def test_signup_form(self):
-        form = self.response.context.get("form")
-        self.assertIsInstance(form, CustomUserCreationForm)
-        self.assertContains(self.response, "csrfmiddlewaretoken")
-
-    def test_signup_view(self):
-        view = resolve("/accounts/signup/")
-        self.assertEqual(view.func.__name__, SignUpPageView.as_view().__name__)
+        new_user = get_user_model().objects.create_user(self.username, self.email)
+        self.assertEqual(get_user_model().objects.all().count(), 1)
+        self.assertEqual(get_user_model().objects.all()[0].username, self.username)
+        self.assertEqual(get_user_model().objects.all()[0].email, self.email)
