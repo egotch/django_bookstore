@@ -155,5 +155,11 @@ AUTHENTICATED_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 ACCOUNT_SESSION_REMEMBER = True #"remember me" box toggle on login screen
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True # bool to "confirm password" on signup
+ACCOUNT_USERNAME_REQUIRED = False # bool requiring a username for login/signup
+ACCOUNT_AUTHENTICATION_METHOD = "email" #what field is used for login creds
+ACCOUNT_EMAIL_REQUIRED = True #Bool to require email at signup for user
+ACCOUNT_UNIQUE_EMAIL = True #Bool requiring user emails to be unique
+
 # email backend config
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
