@@ -154,5 +154,6 @@ AUTHENTICATED_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 )
+ACCOUNT_SESSION_REMEMBER = True #"remember me" box toggle on login screen
 # email backend config
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
