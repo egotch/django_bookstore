@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     # Third party
     "crispy_forms",
     "crispy_bootstrap5",
+    "allauth",
+    "allauth.account",
     # Local
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
@@ -49,6 +51,7 @@ INSTALLED_APPS = [
 CRISPY_ALLOWED_TEMPLATE_PACKS = "boostrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -57,6 +60,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "django_project.urls"
@@ -139,5 +143,23 @@ STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "accounts.CustomUser"
+# LOGIN_REDIRECT_URL = "home"
+# LOGOUT_REDIRECT_URL = "home"
+
+# django-allauth config
+SITE_ID = 1
 LOGIN_REDIRECT_URL = "home"
-LOGOUT_REDIRECT_URL = "home"
+ACCOUNT_LOGOUT_REDIRECT = "home"
+AUTHENTICATED_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+ACCOUNT_SESSION_REMEMBER = True #"remember me" box toggle on login screen
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True # bool to "confirm password" on signup
+ACCOUNT_USERNAME_REQUIRED = False # bool requiring a username for login/signup
+ACCOUNT_AUTHENTICATION_METHOD = "email" #what field is used for login creds
+ACCOUNT_EMAIL_REQUIRED = True #Bool to require email at signup for user
+ACCOUNT_UNIQUE_EMAIL = True #Bool requiring user emails to be unique
+
+# email backend config
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
