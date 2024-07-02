@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
     # Third party
     "crispy_forms",
     "crispy_bootstrap5",
@@ -91,15 +92,15 @@ WSGI_APPLICATION = "django_project.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "default": env.dj_db_url("DATABASE_URL", default="postgres://postgres@db/postgres"),
-        # "ENGINE": "django.db.backends.postgresql",
-        # "NAME": "postgres",
-        # "USER": "postgres",
-        # "PASSWORD": "postgres",
-        # "HOST": "db",  # set to the name of the service in the docker-compose.yaml
-        # "PORT": 5432,  # default port postgres
-    }
+    "default": env.dj_db_url("DATABASE_URL", default="postgres://postgres@db/postgres"),
+    # "default": {
+    # "ENGINE": "django.db.backends.postgresql",
+    # "NAME": "postgres",
+    # "USER": "postgres",
+    # "PASSWORD": "postgres",
+    # "HOST": "db",  # set to the name of the service in the docker-compose.yaml
+    # "PORT": 5432,  # default port postgres
+    # }
 }
 
 
@@ -167,3 +168,4 @@ ACCOUNT_UNIQUE_EMAIL = True #Bool requiring user emails to be unique
 
 # email backend config
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"
