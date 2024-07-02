@@ -14,18 +14,18 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from . import settings
 from django.contrib import admin
 from django.urls import path, include
-import django.contrib.auth.views as auth_views
 
 urlpatterns = [
     # Django admin
     path('admin/', admin.site.urls),
     # User Management
-    # path('logout/', auth_views.LogoutView.as_view(next_page=settings.ACCOUNT_LOGOUT_REDIRECT ), name='logout'),
     path("accounts/", include("allauth.urls")),
     # Local Apps
-    # path("accounts/", include("accounts.urls")),
     path("", include("pages.urls")),
 ]
+
+admin.site.site_header = 'Django Bookstore Admin Panel'
+admin.site.site_title = 'Django Bookstore'
+admin.site.site_domain = "Django Bookstore"

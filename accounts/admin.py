@@ -18,3 +18,4 @@ class CustomUserAdmin(UserAdmin):
     ]
 
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.site_title = "Django Bookstore"
