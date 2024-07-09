@@ -2,6 +2,7 @@ from django.views.generic import ListView, DetailView
 from .models import Book
 
 
+#TODO: Create a way for users to add their own book (not through the admin)
 class BookListView(ListView):
     model = Book
     context_object_name = "book_list"
