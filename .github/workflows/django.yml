@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  DJANGO_SECRET_KEY: "django-insecure-!rq3$$t6dl%@r#@ym$$itntoock9mx$$jd-y!a^c@38cg08qbcw6="
+  DJANGO_DEBUG: "True"
+
 jobs:
   build:
 
