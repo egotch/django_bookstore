@@ -93,15 +93,15 @@ WSGI_APPLICATION = "django_project.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": env.dj_db_url("DATABASE_URL", default="postgres://postgres@db/postgres"),
-    # "default": {
-    # "ENGINE": "django.db.backends.postgresql",
-    # "NAME": "postgres",
-    # "USER": "postgres",
-    # "PASSWORD": "postgres",
-    # "HOST": "db",  # set to the name of the service in the docker-compose.yaml
-    # "PORT": 5432,  # default port postgres
-    # }
+    # "default": env.dj_db_url("DATABASE_URL", default="postgres://postgres@db/postgres"),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env("POSTGRES_DB"),
+        "USER": env("POSTGRES_USER"),
+        "PASSWORD": env("POSTGRES_PASSWORD"),
+        "HOST": env("POSTGRES_HOST"),  # set to the name of the service in the docker-compose.yaml
+        "PORT": 5432,  # default port postgres
+    }
 }
 
 

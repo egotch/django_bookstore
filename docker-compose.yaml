@@ -10,14 +10,18 @@ services:
     depends_on:
       - db
     environment:
-      - "DJANGO_SECRET_KEY=django-insecure-!rq3$$t6dl%@r#@ym$$itntoock9mx$$jd-y!a^c@38cg08qbcw6="
-      - "DJANGO_DEBUG=True"
+      DJANGO_SECRET_KEY: "django-insecure-!rq3$$t6dl%@r#@ym$$itntoock9mx$$jd-y!a^c@38cg08qbcw6="
+      DJANGO_DEBUG: "True"
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_HOST: "db"
   db:
     image: postgres:13
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - "POSTGRES_HOST_AUTH_METHOD=trust"
+    ports:
+      - 5432:5432
 
 volumes:
   postgres_data:
