@@ -8,6 +8,10 @@
     <p>Author: {{ book.author }}</p>
     <p>Price: {{ book.price }}</p>
     <div>
+      <h3>Summary</h3>
+    <p>{{ book.summary }}</p>
+    </div>
+    <div>
       <h3>Reviews</h3>
       <ul>
         {% for review in book.reviews.all %}
