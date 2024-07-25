@@ -10,42 +10,45 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
   </head>
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">Bookstore</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expand="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav me-autoo mb-2 mb-md-0">
-            {% if user.is_authenticated %}
-            <li>
-              <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
-            </li>
-            {% else %} 
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
-            </li>
-            {% endif %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'book_list' %}">Books</a>
-            </li>
-          </ul>
+    <header class="hero">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">Bookstore</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expand="false" aria-label="Toggle navigation">
+            span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-autoo mb-2 mb-md-0">
+              {% if user.is_authenticated %}
+              <li>
+                <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
+              </li>
+              {% else %} 
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+              </li>
+              {% endif %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'book_list' %}">Books</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-      
-    </nav>
+        
+      </nav>
+
     <div class="container">
       {% block content %}
       {% endblock content %}
       
     </div>
+    </header>
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
