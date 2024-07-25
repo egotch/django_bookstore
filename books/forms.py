@@ -5,9 +5,9 @@ from .models import Book
 class BookCreationForm(ModelForm):
     class Meta:
         model = Book
-        fields = {
+        fields = [
             "title",
             "author",
             "price",
             "summary",
-        }
+        ]
